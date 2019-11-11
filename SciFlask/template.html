@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flask app</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1 class="logo">Bayes Interview Task - Hit Refresh to get latest data -- yeah... A bit 90s. </h1>
+        <strong><nav>
+        </nav></strong>
+      </div>
+    </header>
+    <div class="container">
+      {% block content %}
+      {% for n in my_string %}
+        <li>{{n}}</li>
+        {% endfor %}
+      {% endblock %}
+    </div>
+  </body>
+</html>

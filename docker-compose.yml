@@ -1,0 +1,61 @@
+version: '3'
+
+networks:
+  app-tier:
+    driver: bridge
+
+
+services:
+  buildpython:
+    build:
+      context: ./BuildPython/
+      dockerfile: Dockerfile
+
+
+  rabbit1:
+      image: "rabbitmq:3-management"
+      hostname: "rabbit1"
+      environment:
+        RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+        RABBITMQ_DEFAULT_USER: "rabbitmq"
+        RABBITMQ_DEFAULT_PASS: "rabbitmq"
+        RABBITMQ_DEFAULT_VHOST: "/"
+      ports:
+        - "15672:15672" #This port exposes the web interface. 
+        - "5672:5672"
+      networks:
+        - app-tier
+      restart: on-failure
+
+  sciflask:
+    build:
+      context: ./SciFlask
+      dockerfile: Dockerfile
+    networks:
+      - app-tier 
+    #ports: #this was for the first iteration with flask. 
+    # - "5000:5000"
+
+  send_data:
+    build:
+      context: ./SendData
+      dockerfile: Dockerfile
+    networks:
+      - app-tier 
+#    ports:
+#     - "5672:5672"
+#- "ElasticUrl=http://elasticsearch:9200"
+#- "RabbitMq/Host=rabbit"
+
+
+#  rabbit1:
+#    image: "rabbitmq:3"
+#    hostname: "rabbit1"
+#    environment:
+#      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+#      RABBITMQ_DEFAULT_USER: "rabbitmq"
+#      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+##      RABBITMQ_DEFAULT_VHOST: "/"
+#    ports:
+#      - "15672:15672"
+#      - "5672:5672"
