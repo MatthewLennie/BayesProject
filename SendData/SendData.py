@@ -3,13 +3,23 @@ from retry import retry
 import time 
 import csv
 import json
+import logging
+import graypy
+
 
 
 class SendDataObj():
 	def __init__(self,FileName,queue):
+		self.my_logger = logging.getLogger('test_logger')
+		self.my_logger.setLevel(logging.DEBUG)
+		self.handler = graypy.GELFTCPHandler('graylog','12201')
+		self.my_logger.addHandler(self.handler)
+		self.my_logger.info("launching SendData")
+
 		self.FileName = FileName	
 		self.queue = queue
 		self.SendData()
+
 		
 
 	#Loads up data from CSV	
@@ -40,11 +50,12 @@ class SendDataObj():
 				channel.basic_publish(exchange='',
 					                      routing_key=self.queue,
 					                      body=json.dumps(row))
-				print("Sent from {}".format(self.queue))
-			
+				self.my_logger.debug("Sent from {}".format(self.queue))
+				
 			connection.close()
 
 		except KeyboardInterrupt:
+			self.my_logger.warning("KeyboardInterrupt")
 			if connection: 
 				connection.close()
 		except pika.exceptions.ConnectionClosedByBroker:

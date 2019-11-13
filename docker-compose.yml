@@ -11,6 +11,8 @@ services:
     build:
       context: ./BuildPython/
       dockerfile: Dockerfile
+    networks:
+        - graylog
 
 
   rabbit1:
@@ -44,6 +46,7 @@ services:
       dockerfile: Dockerfile
     networks:
       - app-tier 
+      - graylog
     
 
 # MongoDB: https://hub.docker.com/_/mongo/
