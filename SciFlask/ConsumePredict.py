@@ -4,6 +4,14 @@ import pika
 import time
 import json
 from code_challenge_base_predictor import Predictor
+import logging 
+import graypy
+
+my_logger = logging.getLogger('test_logger')
+my_logger.setLevel(logging.DEBUG)
+handler = graypy.GELFTCPHandler('graylog','12201')
+my_logger.addHandler(handler)
+my_logger.debug("hello")
 
 print("launching sciflask",flush=True)
 
@@ -53,7 +61,14 @@ class ConsumePredictReturn():
 		except pika.exceptions.ConnectionClosedByBroker:
 			pass
 
+for i in range(10000):
+	time.sleep(10)
+	my_logger.debug("hello")
+	my_logger.warning("hadsfasd")
+	print("sending debugs",flush=True)
+
 ConsumePredictReturn('queue1')
+
 
 #app = Flask(__name__)
 	#

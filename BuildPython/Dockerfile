@@ -8,4 +8,5 @@ RUN conda install --yes scikit-learn=0.20.0
 RUN pip install pika
 RUN pip install retry
 RUN pip install joblib
+RUN pip install graypy[amqp]
 CMD ["conda","list"]

@@ -1,0 +1,189 @@
+{
+  "v": 1,
+  "id": "49ffbf53-dd98-436f-b7e7-14a796a63ab1",
+  "rev": 1,
+  "name": "BayesSetup",
+  "summary": "Attempt1",
+  "description": "Attemp2",
+  "vendor": "M",
+  "url": "",
+  "parameters": [],
+  "entities": [
+    {
+      "v": "1",
+      "type": {
+        "name": "input",
+        "version": "1"
+      },
+      "id": "ea4f9d0b-5736-4596-a904-f23546967b84",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "jhgjhg"
+        },
+        "configuration": {
+          "tls_key_file": {
+            "@type": "string",
+            "@value": ""
+          },
+          "port": {
+            "@type": "integer",
+            "@value": 12201
+          },
+          "tls_enable": {
+            "@type": "boolean",
+            "@value": false
+          },
+          "use_null_delimiter": {
+            "@type": "boolean",
+            "@value": true
+          },
+          "recv_buffer_size": {
+            "@type": "integer",
+            "@value": 1048576
+          },
+          "tcp_keepalive": {
+            "@type": "boolean",
+            "@value": false
+          },
+          "tls_client_auth_cert_file": {
+            "@type": "string",
+            "@value": ""
+          },
+          "bind_address": {
+            "@type": "string",
+            "@value": "0.0.0.0"
+          },
+          "tls_cert_file": {
+            "@type": "string",
+            "@value": ""
+          },
+          "max_message_size": {
+            "@type": "integer",
+            "@value": 2097152
+          },
+          "tls_client_auth": {
+            "@type": "string",
+            "@value": "disabled"
+          },
+          "decompress_size_limit": {
+            "@type": "integer",
+            "@value": 8388608
+          },
+          "number_worker_threads": {
+            "@type": "integer",
+            "@value": 1
+          },
+          "tls_key_password": {
+            "@type": "string",
+            "@value": ""
+          }
+        },
+        "static_fields": {},
+        "type": {
+          "@type": "string",
+          "@value": "org.graylog2.inputs.gelf.tcp.GELFTCPInput"
+        },
+        "global": {
+          "@type": "boolean",
+          "@value": true
+        },
+        "extractors": []
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "input",
+        "version": "1"
+      },
+      "id": "3a737e02-621c-4084-bd55-8aa4a5c9687b",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "Blah"
+        },
+        "configuration": {
+          "tls_key_file": {
+            "@type": "string",
+            "@value": ""
+          },
+          "port": {
+            "@type": "integer",
+            "@value": 12201
+          },
+          "tls_enable": {
+            "@type": "boolean",
+            "@value": false
+          },
+          "use_null_delimiter": {
+            "@type": "boolean",
+            "@value": true
+          },
+          "recv_buffer_size": {
+            "@type": "integer",
+            "@value": 1048576
+          },
+          "tcp_keepalive": {
+            "@type": "boolean",
+            "@value": false
+          },
+          "tls_client_auth_cert_file": {
+            "@type": "string",
+            "@value": ""
+          },
+          "bind_address": {
+            "@type": "string",
+            "@value": "0.0.0.0"
+          },
+          "tls_cert_file": {
+            "@type": "string",
+            "@value": ""
+          },
+          "max_message_size": {
+            "@type": "integer",
+            "@value": 2097152
+          },
+          "tls_client_auth": {
+            "@type": "string",
+            "@value": "disabled"
+          },
+          "decompress_size_limit": {
+            "@type": "integer",
+            "@value": 8388608
+          },
+          "number_worker_threads": {
+            "@type": "integer",
+            "@value": 1
+          },
+          "tls_key_password": {
+            "@type": "string",
+            "@value": ""
+          }
+        },
+        "static_fields": {},
+        "type": {
+          "@type": "string",
+          "@value": "org.graylog2.inputs.gelf.tcp.GELFTCPInput"
+        },
+        "global": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "extractors": []
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    }
+  ]
+}
