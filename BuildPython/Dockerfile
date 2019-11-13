@@ -9,4 +9,7 @@ RUN pip install pika
 RUN pip install retry
 RUN pip install joblib
 RUN pip install graypy[amqp]
+RUN pip install python-logstash-async
+RUN pip install python-logstash
+RUN pip install python-json-logger
 CMD ["conda","list"]

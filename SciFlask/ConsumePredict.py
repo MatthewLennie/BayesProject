@@ -6,13 +6,51 @@ import json
 from code_challenge_base_predictor import Predictor
 import logging 
 import graypy
+import logstash
+import sys
 
-my_logger = logging.getLogger('test_logger')
-my_logger.setLevel(logging.DEBUG)
-handler = graypy.GELFTCPHandler('graylog','12201')
-my_logger.addHandler(handler)
-my_logger.debug("hello")
+#from logstash_async.handler import AsynchronousLogstashHandler, LogstashFormatter
+#
+#time.sleep(90)
+#logger = logging.getLogger("logstash")
+#logger.setLevel(logging.ERROR)
+#
+#handler = AsynchronousLogstashHandler(
+#	host = 'elk',
+#	port = 9300,
+#	ssl_enable = True,
+#	ssl_verify = False,
+#	database_path = ''
+#	)
+#formatter = LogstashFormatter()
+#handler.setFormatter(formatter)
+#
+#logger.addHandler(handler)
+#
+#for i in range(100):
+#	time.sleep(5)
+#	logger.error('asdfasdf')
+#
+#
+from pythonjsonlogger import jsonlogger
 
+logger = logging.getLogger()
+
+logHandler = logging.StreamHandler()
+formatter = jsonlogger.JsonFormatter()
+logHandler.setFormatter(formatter)
+logger.addHandler(logHandler)
+for i in range(1000):
+	time.sleep(5)
+	logging.info("message")
+	print("Asdfadsf",flush=True)
+#
+#my_logger = logging.getLogger('test_logger')
+#my_logger.setLevel(logging.DEBUG)
+#handler = graypy.GELFTCPHandler('graylog','12201')
+#my_logger.addHandler(handler)
+#my_logger.debug("hello")
+#
 print("launching sciflask",flush=True)
 
 class ConsumePredictReturn():
@@ -60,13 +98,13 @@ class ConsumePredictReturn():
 			self.connection.close()
 		except pika.exceptions.ConnectionClosedByBroker:
 			pass
-
-for i in range(10000):
-	time.sleep(10)
-	my_logger.debug("hello")
-	my_logger.warning("hadsfasd")
-	print("sending debugs",flush=True)
-
+#
+#for i in range(10000):
+#	time.sleep(10)
+#	my_logger.debug("hello")
+#	my_logger.warning("hadsfasd")
+#	print("sending debugs",flush=True)
+#
 ConsumePredictReturn('queue1')
 
 
